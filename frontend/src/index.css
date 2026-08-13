@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+}
+
+/* ---------- Quill 編輯器 ---------- */
+/* Quill 預設不給 container 高度，不設會塌成一條細縫 */
+.ql-container {
+  min-height: 65vh;
+  font-family: inherit;
+  font-size: 16px;
+  border: none !important;
+  /* 預設容器會自己捲動，內容會被 sticky 工具列切掉；改成整頁捲動 */
+  overflow-y: visible;
+}
+
+.ql-editor {
+  min-height: 65vh;
+  padding: 40px 56px;
+  line-height: 1.9;
+}
+
+.ql-editor.ql-blank::before {
+  font-style: normal;
+  color: #9ca3af;
+}
+
+/* 不使用 sticky：工具列在紙張內，捲動後會脫離原位蓋住內文 */
+.ql-toolbar {
+  background: #fff;
+  border: none !important;
+  border-bottom: 1px solid #d8deeb !important;
+  padding: 10px 16px !important;
+}
+
+@media print {
+  .ql-toolbar {
+    display: none !important;
+  }
+  .ql-container,
+  .ql-editor {
+    min-height: 0;
+  }
+  .ql-editor {
+    padding: 0;
+  }
+}

@@ -1,0 +1,37 @@
+# --- 機密 ---
+# backend/.env 裡有 MongoDB Atlas 連線字串與 JWT secret，絕對不能進版控
+.env
+.env.local
+.env.*.local
+
+# --- 相依套件 / 建置產物 ---
+node_modules/
+dist/
+build/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# --- 測試產出 ---
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# --- 參考用的原始專案，不進版控 ---
+Co-Edit-master/
+
+# --- 工具 / 編輯器 ---
+.claude/settings.local.json
+.vscode/
+.idea/
+*.swp
+
+# --- 作業系統 ---
+.DS_Store
+Thumbs.db
+desktop.ini

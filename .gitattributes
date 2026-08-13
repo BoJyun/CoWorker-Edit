@@ -1,0 +1,15 @@
+# 版控裡一律存 LF，簽出時由 core.autocrlf 決定工作區的換行。
+# 沒有這個檔案，Windows 與 macOS/Linux 的協作者會互相把整個檔案改成「全部變更」。
+* text=auto
+
+# 二進位檔不要做任何換行轉換
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webm binary
+*.zip binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
