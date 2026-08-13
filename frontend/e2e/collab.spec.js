@@ -117,8 +117,14 @@ test("兩位使用者同時編輯：內容與游標即時同步", async ({
   );
 
   // --- 游標旗標：A 應該看到 Bob 的游標 ---
+  // quill-cursors 的名稱旗標預設是 hover 才顯示（toggleFlag 對 caret container
+  // 切 .hover class），游標移動本身不會讓它彈出。所以先確認游標存在，
+  // 再把滑鼠移過去才驗旗標——不 hover 就等到天荒地老也不會可見。
+  const bobCaret = page.locator(".ql-cursor-caret-container").first();
+  await expect(bobCaret).toBeAttached({ timeout: 10_000 });
+  await bobCaret.hover({ force: true });
   await expect(
-    page.locator(".ql-cursor-flag", { hasText: "Bob" })
+    page.locator(".ql-cursor-flag").filter({ hasText: "Bob" })
   ).toBeVisible({ timeout: 10_000 });
 
   // --- 線上名單顯示兩個人 ---

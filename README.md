@@ -6,6 +6,39 @@
 
 ---
 
+## 畫面
+
+### 兩人同時編輯，內容與游標即時同步
+
+左邊是文件擁有者 Amber 的畫面 —— Ivan 補上第 4 點的瞬間就同步過來，並顯示他的游標位置與名稱旗標。
+
+| 擁有者視角 | 協作者視角 |
+|---|---|
+| ![擁有者視角](docs/05-collab-owner.png) | ![協作者視角](docs/06-collab-mate.png) |
+
+### 線上協作者名單與結束協作
+
+| 誰在線上 | 擁有者結束協作 |
+|---|---|
+| ![線上協作者](docs/07-online-list.png) | ![結束協作](docs/08-end-session.png) |
+
+### 文件列表與編輯器
+
+| 我的文件 | 編輯器 |
+|---|---|
+| ![Dashboard](docs/03-dashboard.png) | ![編輯器](docs/04-editor.png) |
+
+### 首頁與登入
+
+| 首頁 | 登入 |
+|---|---|
+| ![首頁](docs/01-homepage.png) | ![登入](docs/02-login.png) |
+
+> 以上截圖由 `frontend/e2e/screenshots.spec.js` 自動產生，
+> 跑 `npx playwright test screenshots.spec.js` 即可重新產出。
+
+---
+
 ## 功能
 
 - **JWT 身分驗證** — socket.io 在**連線當下**就驗 token，之後所有事件都以該身分為準，客戶端無法冒充他人
@@ -178,6 +211,11 @@ frontend/
   e2e/                # Playwright 測試
 ```
 
-## 已知問題
+### 產生 README 截圖
 
-- `collab.spec.js` 的游標旗標測試不穩定 —— 內容同步正常，但 quill-cursors 的名稱旗標會自動淡出，斷言時可能已隱藏。
+```bash
+cd frontend
+npx playwright test screenshots.spec.js     # 產出到 ../docs/
+```
+
+這支不是驗證用的測試，是文件產生器。它會建立示範帳號與文件，跑完記得清理。
